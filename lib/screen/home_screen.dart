@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bmi/screen/score_screen.dart';
+import 'package:flutter_bmi/util/Calculate.dart';
 import 'package:flutter_bmi/widget/height_widget.dart';
 
 import '../widget/age_weight_widget.dart';
 import '../widget/gender_widget.dart';
-import 'dart:math';
 
-import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:swipeable_button_view/swipeable_button_view.dart';
 
@@ -93,7 +92,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                         onWaitingProcess: () {
                           //Calculate BMI here
-                          calculateBmi();
+                          //calculateBmi();
+                          _bmiScore = Calculate.calculateBmi(_weight, _height);
 
                           Future.delayed(Duration(seconds: 1), () {
                             setState(() {
@@ -113,9 +113,5 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ));
-  }
-
-  void calculateBmi() {
-    _bmiScore = _weight / pow(_height / 100, 2);
   }
 }
