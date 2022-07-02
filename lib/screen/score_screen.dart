@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:pretty_gauge/pretty_gauge.dart';
 import 'package:share_plus/share_plus.dart';
 
+import '../util/Rating.dart';
+
 class ScoreScreen extends StatelessWidget {
   final double bmiScore;
 
@@ -97,22 +99,8 @@ class ScoreScreen extends StatelessWidget {
   }
 
   void setBmiInterpretation() {
-    if (bmiScore > 30) {
-      bmiStatus = "Obese";
-      bmiInterpretation = "Please work to reduce obesity";
-      bmiStatusColor = Colors.pink;
-    } else if (bmiScore >= 25) {
-      bmiStatus = "Overweight";
-      bmiInterpretation = "Do regular exercise & reduce the weight";
-      bmiStatusColor = Colors.orange;
-    } else if (bmiScore >= 18.5) {
-      bmiStatus = "Normal";
-      bmiInterpretation = "Enjoy, You are fit";
-      bmiStatusColor = Colors.green;
-    } else if (bmiScore < 18.5) {
-      bmiStatus = "Underweight";
-      bmiInterpretation = "Try to increase the weight";
-      bmiStatusColor = Colors.red;
-    }
-  }
+    bmiInterpretation = Rating.rate(bmiScore)[0];
+    bmiStatus = Rating.rate(bmiScore)[1];
+    bmiStatusColor = Rating.rate(bmiScore)[2];
+   }
 }
