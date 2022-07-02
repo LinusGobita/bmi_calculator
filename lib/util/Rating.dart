@@ -8,7 +8,6 @@ class Rating {
     var ratingList = [];
 
     if (bmi < 15) {
-      //message = 'height_input'.i10n();
       message = 'You are very severely underweight';
       status = 'Underweight';
       bmiStatusColor = Colors.red;
@@ -49,7 +48,7 @@ class Rating {
     ratingList.add(message);
     ratingList.add(status);
     ratingList.add(bmiStatusColor);
-    //return message + status;
+
     return ratingList;
   }
 }
