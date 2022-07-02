@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../generated/l10n.dart';
+
 class HeightWidget extends StatefulWidget {
   final Function(int) onChange;
 
@@ -8,6 +10,8 @@ class HeightWidget extends StatefulWidget {
   @override
   _HeightWidgetState createState() => _HeightWidgetState();
 }
+
+
 
 class _HeightWidgetState extends State<HeightWidget> {
   int _height = 150;
@@ -21,8 +25,8 @@ class _HeightWidgetState extends State<HeightWidget> {
           shape: const RoundedRectangleBorder(),
           child: Column(
             children: [
-              const Text(
-                "Height",
+              Text(
+                S.of(context).height_input,
                 style: TextStyle(fontSize: 25, color: Colors.grey),
               ),
               const SizedBox(

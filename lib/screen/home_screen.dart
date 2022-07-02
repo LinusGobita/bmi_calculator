@@ -3,9 +3,9 @@ import 'package:flutter_bmi/screen/score_screen.dart';
 import 'package:flutter_bmi/util/Calculate.dart';
 import 'package:flutter_bmi/widget/height_widget.dart';
 
+import '../generated/l10n.dart';
 import '../widget/age_weight_widget.dart';
 import '../widget/gender_widget.dart';
-
 import 'package:page_transition/page_transition.dart';
 import 'package:swipeable_button_view/swipeable_button_view.dart';
 
@@ -27,9 +27,10 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
         appBar: AppBar(
           centerTitle: true,
-          title: const Text("BMI Calculator"),
+          title: Text(S.of(context).app_title),
         ),
         body: SingleChildScrollView(
           child: Container(
@@ -57,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           onChange: (ageVal) {
                             _age = ageVal;
                           },
-                          title: "Age",
+                          title: S.of(context).age,
                           initValue: 30,
                           min: 0,
                           max: 100),
@@ -65,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           onChange: (weightVal) {
                             _weight = weightVal;
                           },
-                          title: "Weight(Kg)",
+                          title: S.of(context).weight_input,
                           initValue: 50,
                           min: 0,
                           max: 200)
@@ -106,7 +107,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           Icons.arrow_forward_ios_rounded,
                           color: Colors.black,
                         ),
-                        buttonText: "CALCULATE"),
+                        buttonText: S.of(context).calculate,
+                  ),
                   )
                 ],
               ),

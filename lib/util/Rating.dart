@@ -1,46 +1,48 @@
 import 'package:flutter/material.dart';
 
+import '../generated/l10n.dart';
+
 class Rating {
-  static rate(bmi) {
+  static rate(bmi, context) {
     String message;
     String status;
     MaterialColor bmiStatusColor;
     var ratingList = [];
 
     if (bmi < 15) {
-      message = 'You are very severely underweight';
+      message = S.of(context).underweight_very_severely;
       status = 'Underweight';
       bmiStatusColor = Colors.red;
     } else if (bmi < 16) {
-      message = 'You very underweight';
+      message = S.of(context).underweight_severely;
       status = 'Underweight';
       bmiStatusColor = Colors.red;
     } else if (bmi < 17) {
-      message = 'You are moderately underweight';
+      message = S.of(context).underweight_moderately;
       status = 'Underweight';
       bmiStatusColor = Colors.red;
     } else if (bmi < 18.5) {
-      message = 'You are slightly underweight';
+      message = S.of(context).underweight_slightly;
       status = 'Underweight';
       bmiStatusColor = Colors.red;
     } else if (bmi < 25) {
-      message = 'You are at a normal weight';
+      message = S.of(context).normal;
       status = 'Normal';
       bmiStatusColor = Colors.green;
     } else if (bmi < 30) {
-      message = 'You are overweight';
+      message = S.of(context).overweight;
       status = 'Overweight';
       bmiStatusColor = Colors.pink;
     } else if (bmi < 35) {
-      message = 'You are moderately obese';
+      message = S.of(context).obese_moderately;
       status = 'Obese';
       bmiStatusColor = Colors.pink;
     } else if (bmi < 40) {
-      message = 'You are severely obese';
+      message = S.of(context).obese_severely;
       status = 'Obese';
       bmiStatusColor = Colors.pink;
     } else {
-      message = 'You are very severely obese';
+      message = S.of(context).obese_very_severely;
       status = 'Obese';
       bmiStatusColor = Colors.pink;
     }

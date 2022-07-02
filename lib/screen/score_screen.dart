@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pretty_gauge/pretty_gauge.dart';
 import 'package:share_plus/share_plus.dart';
 
+import '../generated/l10n.dart';
 import '../util/Rating.dart';
 
 class ScoreScreen extends StatelessWidget {
@@ -20,11 +21,11 @@ class ScoreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    setBmiInterpretation();
+    setBmiInterpretation(context);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text("BMI Score"),
+        title: Text(S.of(context).bmi_score),
       ),
       body: Container(
           padding: const EdgeInsets.all(12),
@@ -98,9 +99,9 @@ class ScoreScreen extends StatelessWidget {
     );
   }
 
-  void setBmiInterpretation() {
-    bmiInterpretation = Rating.rate(bmiScore)[0];
-    bmiStatus = Rating.rate(bmiScore)[1];
-    bmiStatusColor = Rating.rate(bmiScore)[2];
+  void setBmiInterpretation(context) {
+    bmiInterpretation = Rating.rate(bmiScore, context)[0];
+    bmiStatus = Rating.rate(bmiScore, context)[1];
+    bmiStatusColor = Rating.rate(bmiScore, context)[2];
    }
 }

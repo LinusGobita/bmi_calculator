@@ -1,0 +1,17 @@
+{
+  "age": "alter",
+  "app_title": "BMI rächner",
+  "calculate": "usrächne",
+  "height_input": "wi gross bisch in cm?",
+  "weight_input": "wi schwer bisch in kg?",
+  "underweight_very_severely": "du bisch scho sehr sehr mager",
+  "underweight_severely": "du bisch sehr untergwichtig",
+  "underweight_moderately": "du bisch e untergwichtig",
+  "underweight_slightly": "du bisch e chli untergwichtig",
+  "normal": "dis gwicht isch öppe normal",
+  "overweight": "du bisch übergwichtig",
+  "obese_moderately": "du bisch fettliibig",
+  "obese_severely": "du bisch sehr fettliibig",
+  "obese_very_severely": "du bisch extrem fettliibig",
+  "entry_request": "bitte gib dini grössi und gwicht ii"
+}
