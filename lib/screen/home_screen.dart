@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bmi/screen/score_screen.dart';
 import 'package:flutter_bmi/util/Calculate.dart';
-import 'package:flutter_bmi/widget/height_widget.dart';
 
 import '../generated/l10n.dart';
-import '../widget/age_weight_widget.dart';
 import '../widget/gender_widget.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:swipeable_button_view/swipeable_button_view.dart';
+
+import '../widget/slider_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -45,32 +45,35 @@ class _HomeScreenState extends State<HomeScreen> {
                       _gender = genderVal;
                     },
                   ),
-                  HeightWidget(
-                    onChange: (heightVal) {
-                      _height = heightVal;
-                    },
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      AgeWeightWidget(
-                          onChange: (ageVal) {
-                            _age = ageVal;
-                          },
-                          title: S.of(context).age,
-                          initValue: 30,
-                          min: 0,
-                          max: 100),
-                      AgeWeightWidget(
-                          onChange: (weightVal) {
-                            _weight = weightVal;
-                          },
-                          title: S.of(context).weight_input,
-                          initValue: 50,
-                          min: 0,
-                          max: 200)
-                    ],
-                  ),
+                  SliderWidget(
+                      onChange: (heightVal) {
+                        _height = heightVal;
+                      },
+                      title: S.of(context).height_input,
+                      min: 0,
+                      initValue: 170,
+                      max: 240,
+                      unit: "cm"),
+                  SliderWidget(
+                      onChange: (ageVal) {
+                        _age = ageVal;
+                      },
+                      title: S.of(context).age,
+                      min: 0,
+                      initValue: 30,
+                      max: 120,
+                      unit: "Years"),
+                  SliderWidget(
+                      onChange: (weightVal) {
+                        _weight = weightVal;
+                      },
+                      title: S.of(context).weight_input,
+                      min: 0,
+                      initValue: 80,
+                      max: 150,
+                      unit: "Kg"),
+
+
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         vertical: 20, horizontal: 60),
