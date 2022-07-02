@@ -18,10 +18,9 @@ class _GenderWidgetState extends State<GenderWidget> {
       borderRadius: BorderRadius.circular(20));
 
   final ChoiceChip3DStyle unselectedStyle = ChoiceChip3DStyle(
-  topColor: Colors.white,
-  backColor: Colors.grey[300]!,
-  borderRadius: BorderRadius.circular(20));
-
+      topColor: Colors.white,
+      backColor: Colors.grey[300]!,
+      borderRadius: BorderRadius.circular(20));
 
   @override
   Widget build(BuildContext context) {
@@ -33,39 +32,52 @@ class _GenderWidgetState extends State<GenderWidget> {
           ChoiceChip3D(
               border: Border.all(color: Colors.grey),
               style: _gender == 1 ? selectedStyle : unselectedStyle,
-              onSelected: (){
-                setState((){
+              onSelected: () {
+                setState(() {
                   _gender = 1;
                 });
                 widget.onChange(_gender);
-              }, onUnSelected: (){}, selected: _gender == 1, child: Column(
-
-            children: [
-              Image.asset("assets/image/man.jpeg", width: 50,),
-              const SizedBox(
-                height: 5,
-              ),
-              const Text("Man"),
-            ],
-          )),
-          const SizedBox(width: 20,),
+              },
+              onUnSelected: () {},
+              selected: _gender == 1,
+              child: Column(
+                children: [
+                  Image.asset(
+                    "assets/image/man.jpeg",
+                    width: 50,
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  const Text("Man"),
+                ],
+              )),
+          const SizedBox(
+            width: 20,
+          ),
           ChoiceChip3D(
               border: Border.all(color: Colors.grey),
               style: _gender == 2 ? selectedStyle : unselectedStyle,
-              onSelected: (){
-                setState((){
+              onSelected: () {
+                setState(() {
                   _gender = 2;
                 });
                 widget.onChange(_gender);
-              }, selected: _gender == 2, onUnSelected: (){}, child: Column(
-            children: [
-              Image.asset("assets/image/woman.jpg", width: 50,),
-              const SizedBox(
-                height: 5,
-              ),
-              const Text("Woman"),
-            ],
-          ))
+              },
+              selected: _gender == 2,
+              onUnSelected: () {},
+              child: Column(
+                children: [
+                  Image.asset(
+                    "assets/image/woman.jpg",
+                    width: 50,
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  const Text("Woman"),
+                ],
+              ))
         ],
       ),
     );

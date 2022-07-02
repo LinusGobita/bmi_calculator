@@ -103,5 +103,5 @@ class ScoreScreen extends StatelessWidget {
     bmiInterpretation = Rating.rate(bmiScore, context)[0];
     bmiStatus = Rating.rate(bmiScore, context)[1];
     bmiStatusColor = Rating.rate(bmiScore, context)[2];
-   }
+  }
 }

@@ -13,11 +13,11 @@ class AgeWeightWidget extends StatefulWidget {
 
   const AgeWeightWidget(
       {Key? key,
-        required this.onChange,
-        required this.title,
-        required this.initValue,
-        required this.min,
-        required this.max})
+      required this.onChange,
+      required this.title,
+      required this.initValue,
+      required this.min,
+      required this.max})
       : super(key: key);
 
   @override

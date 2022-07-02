@@ -27,7 +27,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
         appBar: AppBar(
           centerTitle: true,
           title: Text(S.of(context).app_title),
@@ -76,39 +75,39 @@ class _HomeScreenState extends State<HomeScreen> {
                     padding: const EdgeInsets.symmetric(
                         vertical: 20, horizontal: 60),
                     child: SwipeableButtonView(
-                        isFinished: _isFinished,
-                        onFinish: () async {
-                          await Navigator.push(
-                              context,
-                              PageTransition(
-                                  child: ScoreScreen(
-                                    bmiScore: _bmiScore,
-                                    age: _age,
-                                  ),
-                                  type: PageTransitionType.fade));
+                      isFinished: _isFinished,
+                      onFinish: () async {
+                        await Navigator.push(
+                            context,
+                            PageTransition(
+                                child: ScoreScreen(
+                                  bmiScore: _bmiScore,
+                                  age: _age,
+                                ),
+                                type: PageTransitionType.fade));
 
+                        setState(() {
+                          _isFinished = false;
+                        });
+                      },
+                      onWaitingProcess: () {
+                        //Calculate BMI here
+                        //calculateBmi();
+                        _bmiScore = Calculate.calculateBmi(_weight, _height);
+
+                        Future.delayed(Duration(seconds: 1), () {
                           setState(() {
-                            _isFinished = false;
+                            _isFinished = true;
                           });
-                        },
-                        onWaitingProcess: () {
-                          //Calculate BMI here
-                          //calculateBmi();
-                          _bmiScore = Calculate.calculateBmi(_weight, _height);
-
-                          Future.delayed(Duration(seconds: 1), () {
-                            setState(() {
-                              _isFinished = true;
-                            });
-                          });
-                        },
-                        activeColor: Colors.blue,
-                        buttonWidget: const Icon(
-                          Icons.arrow_forward_ios_rounded,
-                          color: Colors.black,
-                        ),
-                        buttonText: S.of(context).calculate,
-                  ),
+                        });
+                      },
+                      activeColor: Colors.blue,
+                      buttonWidget: const Icon(
+                        Icons.arrow_forward_ios_rounded,
+                        color: Colors.black,
+                      ),
+                      buttonText: S.of(context).calculate,
+                    ),
                   )
                 ],
               ),
