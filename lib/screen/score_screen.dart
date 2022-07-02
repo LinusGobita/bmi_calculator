@@ -35,8 +35,9 @@ class ScoreScreen extends StatelessWidget {
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
-                      "Your Score",
+                    Text(
+                      //"Your Score",
+                      S.of(context).your_score,
                       style: TextStyle(fontSize: 30, color: Colors.blue),
                     ),
                     const SizedBox(
@@ -83,7 +84,8 @@ class ScoreScreen extends StatelessWidget {
                             onPressed: () {
                               Navigator.pop(context);
                             },
-                            child: const Text("Re-calculate")),
+                            //child: const Text("Re-calculate")),
+                        child: Text(S.of(context).recalculate)),
                         const SizedBox(
                           width: 10,
                         ),
@@ -92,7 +94,9 @@ class ScoreScreen extends StatelessWidget {
                               Share.share(
                                   "Your BMI is ${bmiScore.toStringAsFixed(1)} at age $age");
                             },
-                            child: const Text("Share")),
+
+                          child: Text(S.of(context).share),
+                        )
                       ],
                     )
                   ]))),

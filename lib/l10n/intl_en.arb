@@ -1,7 +1,6 @@
 {
   "age": "Age",
   "app_title": "BMI Calculator",
-  "bmi_score": "BMI Score",
   "calculate": "Calculate",
   "height_input": "height (cm)",
   "weight_input": "weight (kg)",
@@ -14,5 +13,9 @@
   "obese_moderately": "you are moderately obese",
   "obese_severely": "you are severely obese",
   "obese_very_severely": "you are very severely obese",
-  "entry_request": "please enter your height and weight"
+  "entry_request": "please enter your height and weight",
+  "bmi_score": "BMI Score",
+  "recalculate": "Recalculate",
+  "share": "Share",
+  "your_score": "Your Score"
 }
