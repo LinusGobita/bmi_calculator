@@ -54,32 +54,29 @@ class _GenderWidgetState extends State<GenderWidget> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Container(
-        height: 100,
-        child: ListView(
-          scrollDirection: Axis.horizontal,
-          children: [
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
           buildCard("Linus"),
-            const SizedBox(width: 20,),
-            buildCard("Pietro"),
-            const SizedBox(width: 20,),
-            buildCard("Didier"),
-            const SizedBox(width: 20,),
-            buildCard("Mike"),
-            const SizedBox(width: 20,),
-            buildCard("Marco"),
-            const SizedBox(width: 20,),
-            const Icon(Icons.add, color: Colors.blue,),
-            const InkWell(
-                child: CircleAvatar(
-                  radius: 12,
-                  backgroundColor:  Colors.blue,
-                  child: Icon(Icons.add, color: Colors.white,),
-                ),
-            )
-          ]
+          const SizedBox(width: 20,),
+          buildCard("Pietro"),
+          const SizedBox(width: 20,),
+          buildCard("Didier"),
+          const SizedBox(width: 20,),
+          buildCard("Mike"),
+          const SizedBox(width: 20,),
+          buildCard("Marco"),
+          const SizedBox(width: 20,),
+          const InkWell(
+            child: CircleAvatar(
+              radius: 12,
+              backgroundColor:  Colors.blue,
+              child: Icon(Icons.add, color: Colors.white,),
+            ),
           )
-        ),
-      );
+
+        ],
+      ),
+    );
   }
 }

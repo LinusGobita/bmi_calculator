@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bmi/screen/score_screen.dart';
 import 'package:flutter_bmi/util/Calculate.dart';
+import 'package:flutter_bmi/widget/nav_bar.dart';
 
 import '../generated/l10n.dart';
 import '../widget/gender_widget.dart';
@@ -27,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavBar(),
         appBar: AppBar(
           centerTitle: true,
           title: Text(S.of(context).app_title),
