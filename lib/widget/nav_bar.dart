@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bmi/screen/home_screen.dart';
 import 'package:page_transition/page_transition.dart';
 
 import '../screen/login_screen.dart';
@@ -23,11 +24,11 @@ class _NavBarState extends State<NavBar> {
             currentAccountPicture: CircleAvatar(
               child: ClipOval(
                   child: Image.asset(
-                "assets/image/woman.jpg",
-                width: 90,
-                height: 90,
-                fit: BoxFit.cover,
-              )),
+                    "assets/image/woman.jpg",
+                    width: 90,
+                    height: 90,
+                    fit: BoxFit.cover,
+                  )),
             ),
           ),
           ListTile(
@@ -49,9 +50,13 @@ class _NavBarState extends State<NavBar> {
           ListTile(
               leading: Icon(Icons.exit_to_app),
               title: Text("Exit"),
-              onTap: () => PageTransition(
-                  child: LoginScreen(),
-                  type: PageTransitionType.fade)),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginScreen())
+                );
+              }
+          )
         ],
       ),
     );

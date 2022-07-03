@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         supportedLocales: S.delegate.supportedLocales,
 
         debugShowCheckedModeBanner: false,
-        home: HomeScreen(),
+        home: const HomeScreen(),
     );
   }
 }

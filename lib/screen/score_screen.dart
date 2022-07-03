@@ -7,13 +7,9 @@ import '../util/Rating.dart';
 
 class ScoreScreen extends StatelessWidget {
   final double bmiScore;
-
   final int age;
-
   String? bmiStatus;
-
   String? bmiInterpretation;
-
   Color? bmiStatusColor;
 
   ScoreScreen({Key? key, required this.bmiScore, required this.age})

@@ -25,17 +25,17 @@ class _GenderWidgetState extends State<GenderWidget> {
       backColor: Colors.grey[300]!,
       borderRadius: BorderRadius.circular(20));
 
-  Widget buildCard(String name ) => ChoiceChip3D(
+  Widget buildCard(String name, int id ) => ChoiceChip3D(
       border: Border.all(color: Colors.grey),
-      style: _gender == 1 ? selectedStyle : unselectedStyle,
+      style: _gender == id ? selectedStyle : unselectedStyle,
       onSelected: () {
         setState(() {
-          _gender = 1;
+          _gender = id;
         });
         widget.onChange(_gender);
       },
       onUnSelected: () {},
-      selected: _gender == 1,
+      selected: _gender == id,
       child: Column(
         children: [
           Image.asset(
@@ -59,15 +59,15 @@ class _GenderWidgetState extends State<GenderWidget> {
         child: ListView(
           scrollDirection: Axis.horizontal,
           children: [
-          buildCard("Linus"),
+          buildCard("Linus", 1),
             const SizedBox(width: 20,),
-            buildCard("Pietro"),
+            buildCard("Pietro", 2),
             const SizedBox(width: 20,),
-            buildCard("Didier"),
+            buildCard("Didier", 3),
             const SizedBox(width: 20,),
-            buildCard("Mike"),
+            buildCard("Mike", 4),
             const SizedBox(width: 20,),
-            buildCard("Marco"),
+            buildCard("Marco", 5),
             const SizedBox(width: 20,),
             const Icon(Icons.add, color: Colors.blue,),
             const InkWell(
