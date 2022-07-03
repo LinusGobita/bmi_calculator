@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bmi/screen/bmihistory_screen.dart';
-import 'package:flutter_bmi/screen/bmirating_screen.dart';
-import 'package:flutter_bmi/screen/newuser_screen.dart';
+import 'package:flutter_bmi/screen/bmi_history_screen.dart';
+import 'package:flutter_bmi/screen/bmi_rating_screen.dart';
+import 'package:flutter_bmi/widget/profil_widget.dart';
 
+import '../screen/edit_profile_screen.dart';
 import '../screen/login_screen.dart';
+import '../screen/profile_screen.dart';
+import '../util/user_preferences.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({Key? key}) : super(key: key);
@@ -14,54 +17,60 @@ class NavBar extends StatefulWidget {
 }
 
 class _NavBarState extends State<NavBar> {
+  final user = UserPreferences().user;
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
         children: [
           UserAccountsDrawerHeader(
-            accountName: Text("Linus"),
-            accountEmail: Text("Linus@Gobita.ch"),
+            accountName: Text(user.name),
+            accountEmail: Text(user.email),
             currentAccountPicture: CircleAvatar(
-              child: ClipOval(
-                  child: Image.asset(
-                    "assets/image/woman.jpg",
-                    width: 90,
-                    height: 90,
-                    fit: BoxFit.cover,
-                  )),
+              child: ProfileWidget(
+                imagePath: user.imagePath,
+                isEdit: true,
+                onClicked: () {
+                  Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => EditProfilePage()),
+                  );
+                },
+              ),
             ),
           ),
           ListTile(
-            leading: Icon(Icons.health_and_safety),
-            title: Text("Gewchitsverlauf"),
+              leading: Icon(Icons.new_label),
+              title: Text("Show User Data"),
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const BMIHistoryScreen())
-                );
-              }
-          ),
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ProfilePage()));
+              }),
           ListTile(
-            leading: Icon(Icons.list),
-            title: Text("Raiting"),
+              leading: Icon(Icons.new_label),
+              title: Text("Edit Profile Page"),
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const BMIRatingScreen())
-                );
-              }
-          ),
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => EditProfilePage()));
+              }),
           ListTile(
-            leading: Icon(Icons.new_label),
-            title: Text("Add New User"),
+              leading: Icon(Icons.health_and_safety),
+              title: Text("Gewchitsverlauf"),
               onTap: () {
                 Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const NewUserScreen())
-                );
-              }
-          ),
+                    MaterialPageRoute(
+                        builder: (context) => const BMIHistoryScreen()));
+              }),
+          ListTile(
+              leading: Icon(Icons.list),
+              title: Text("Raiting"),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const BMIRatingScreen()));
+              }),
           Divider(),
           ListTile(
               leading: Icon(Icons.exit_to_app),
@@ -69,10 +78,9 @@ class _NavBarState extends State<NavBar> {
               onTap: () {
                 Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const LoginScreen())
-                );
-              }
-          )
+                    MaterialPageRoute(
+                        builder: (context) => const LoginScreen()));
+              })
         ],
       ),
     );

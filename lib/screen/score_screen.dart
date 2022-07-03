@@ -6,6 +6,7 @@ import 'package:share_plus/share_plus.dart';
 import '../businessObject/BMI.dart';
 import '../generated/l10n.dart';
 import '../util/Rating.dart';
+import '../widget/appbar_widget.dart';
 
 class ScoreScreen extends StatelessWidget {
   final double bmiScore;
@@ -21,10 +22,7 @@ class ScoreScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     setBmiInterpretation(context);
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(S.of(context).bmi_score),
-      ),
+      appBar: buildAppBar(context, S.of(context).bmi_score),
       body: Container(
           padding: const EdgeInsets.all(12),
           child: Card(
