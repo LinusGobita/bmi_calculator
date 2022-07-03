@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../widget/appbar_widget.dart';
 import '../widget/gender_widget.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -9,10 +10,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text("Login Screen"),
-        ),
+        appBar: buildAppBar(context, "Loging"),
         body: Container(
           //Lets create widget for gender selection
           child: GenderWidget(

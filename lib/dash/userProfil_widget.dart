@@ -32,7 +32,7 @@ class _UserProfilPictureState extends State<UserProfilPicture> {
                         onPressed: () {},
                         style: ButtonStyle(
                             backgroundColor:
-                                MaterialStateProperty.all(Colors.white),
+                                MaterialStateProperty.all(Colors.blue),
                             shape: MaterialStateProperty.all<
                                 RoundedRectangleBorder>(RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(18.0),
@@ -69,23 +69,26 @@ class _UserProfilBodyState extends State<UserProfilBody> {
             children: [
               TextButton(
                 onPressed: () {},
-                
                 style: ButtonStyle(
                     backgroundColor:
                         MaterialStateProperty.all(Colors.grey[300])),
                 child: Row(
                   children: [
-                    Icon(Icons.supervised_user_circle_rounded)
+                    Icon(Icons.supervised_user_circle_rounded),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Expanded(
+                        child: Text(
+                      "My Account name",
+                      style: Theme.of(context).textTheme.bodyText1,
+                    ),
+                    ),
                   ],
                 ),
               ),
-              SizedBox(height: 20,),
-              TextButton(
-                onPressed: () {},
-                style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all(Colors.grey[300])),
-                child: Row(),
+              SizedBox(
+                height: 20,
               ),
             ],
           ),
@@ -93,4 +96,25 @@ class _UserProfilBodyState extends State<UserProfilBody> {
       ],
     );
   }
+}
+
+class EditProfilePage2 extends StatefulWidget {
+  const EditProfilePage2({Key? key}) : super(key: key);
+
+  @override
+  State<EditProfilePage2> createState() => _EditProfilePageState();
+}
+
+class _EditProfilePageState extends State<EditProfilePage2> {
+  @override
+  Widget build(BuildContext context) => Scaffold(
+    appBar: AppBar(),
+    body: ListView(
+      padding: EdgeInsets.symmetric(horizontal: 32),
+      physics: BouncingScrollPhysics(),
+      children: [
+      ],
+    ),
+
+  );
 }
