@@ -1,19 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-class LoginScreen extends StatelessWidget {
 
-  const LoginScreen({Key? key,}) : super(key: key)
+import '../widget/gender_widget.dart';
+
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
-  Future<Widget> build(BuildContext context) async {
-    throw Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text("Select your User")
-    ),
-      body: Container(
-        padding: EdgeInsets.all(12),
-      ),
-    );
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text("Login Screen"),
+        ),
+        body: Container(
+          //Lets create widget for gender selection
+          child: GenderWidget(
+            onChange: (genderVal) {},
+          ),
+        ));
   }
 }
