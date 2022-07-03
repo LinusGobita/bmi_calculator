@@ -5,6 +5,10 @@ class UserSimplePreferences{
 
   static const _keyUsername = "Username";
 
+
+
+
+
   static Future init() async =>
       _preferences = await SharedPreferences.getInstance();
 
@@ -12,5 +16,7 @@ class UserSimplePreferences{
   static Future setUsername(String username) async =>
   await _preferences.setString(_keyUsername, username);
 
-  static String? getUsername() => _preferences.getString(_keyUsername);
+  static String? getUsername() => _preferences.
+
+  getString(_keyUsername);
 }

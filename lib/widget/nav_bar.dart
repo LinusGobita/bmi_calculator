@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bmi/screen/home_screen.dart';
-import 'package:page_transition/page_transition.dart';
+import 'package:flutter_bmi/screen/bmihistory_screen.dart';
+import 'package:flutter_bmi/screen/bmirating_screen.dart';
+import 'package:flutter_bmi/screen/newuser_screen.dart';
 
 import '../screen/login_screen.dart';
 
@@ -34,17 +35,32 @@ class _NavBarState extends State<NavBar> {
           ListTile(
             leading: Icon(Icons.health_and_safety),
             title: Text("Gewchitsverlauf"),
-            onTap: () => print("Gewichtsverlauf"),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const BMIHistoryScreen())
+                );
+              }
           ),
           ListTile(
             leading: Icon(Icons.list),
             title: Text("Raiting"),
-            onTap: () => print("Gewichtsverlauf"),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const BMIRatingScreen())
+                );
+              }
           ),
           ListTile(
             leading: Icon(Icons.new_label),
             title: Text("Add New User"),
-            onTap: () => print("Add User"),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const NewUserScreen())
+                );
+              }
           ),
           Divider(),
           ListTile(
@@ -53,7 +69,7 @@ class _NavBarState extends State<NavBar> {
               onTap: () {
                 Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => LoginScreen())
+                    MaterialPageRoute(builder: (context) => const LoginScreen())
                 );
               }
           )
