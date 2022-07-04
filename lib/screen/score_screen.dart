@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bmi/util/DatabaseHandler.dart';
 import 'package:pretty_gauge/pretty_gauge.dart';
 import 'package:share_plus/share_plus.dart';
 
+import '../businessObject/BMI.dart';
 import '../generated/l10n.dart';
 import '../util/Rating.dart';
 
@@ -104,4 +106,5 @@ class ScoreScreen extends StatelessWidget {
     bmiStatus = Rating.rate(bmiScore, context)[1];
     bmiStatusColor = Rating.rate(bmiScore, context)[2];
   }
+
 }
