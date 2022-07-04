@@ -87,9 +87,10 @@ class ScoreScreen extends StatelessWidget {
                         ),
                         ElevatedButton(
                           onPressed: () {
-                            var id = dbHandler.getLastId();
+                            //var id = dbHandler.getLastId();
                             BMI bmi =
-                                BMI(bmi: bmiScore, userName: "foo", id: id);
+                                //BMI(bmi: bmiScore, userName: "foo", id: id);
+                              BMI(bmi: bmiScore, userName: "foo");
                             print(bmi.toString());
                             dbHandler.insertBMI(bmi);
                           },

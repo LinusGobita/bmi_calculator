@@ -35,7 +35,7 @@ class DatabaseHandler {
 
   Future<void> updateUsingHelper(BMI bmi) async {
     final Database db = await initializeDB();
-    await db.update('bmi', bmi.toMap(), where: 'id= ?', whereArgs: [bmi.id]);
+    //await db.update('bmi', bmi.toMap(), where: 'id= ?', whereArgs: [bmi.id]);
   }
 
   int getLastId() {
