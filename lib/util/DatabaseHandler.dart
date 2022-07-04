@@ -11,7 +11,7 @@ class DatabaseHandler {
       join(path, 'bmi.db'),
       onCreate: (database, version) async {
         await database.execute(
-          "CREATE TABLE BMI(id INTEGER PRIMARY KEY AUTOINCREMENT,)"
+          "CREATE TABLE BMI(id INTEGER PRIMARY KEY AUTOINCREMENT, bmi double, userName string)"
         );
       },
       version: 1,
