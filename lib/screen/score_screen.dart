@@ -57,13 +57,13 @@ class ScoreScreen extends StatelessWidget {
                     ),
                     Text(
                       rating.status,
-                      style: TextStyle(fontSize: 20, color: rating.bmiStatusColor!),
+                      style: TextStyle(fontSize: 20, color: rating.bmiStatusColor),
                     ),
                     const SizedBox(
                       height: 10,
                     ),
                     Text(
-                      rating.message!,
+                      rating.message,
                       style: const TextStyle(fontSize: 15),
                     ),
                     const SizedBox(
