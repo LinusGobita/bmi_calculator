@@ -10,7 +10,19 @@ class UserPreferences {
     isDarkMode: false
   );
 
+  static const emptyUser = User(
+    imagePath: "assets/image/man.jpeg",
+    name: "Your Name",
+    email: "Your Email",
+    about: "Tell me something about you",
+    isDarkMode: false
+  );
+
   User get user {
     return myUser;
   }
+    User get newUser {
+    return emptyUser;
+  }
+
 }
