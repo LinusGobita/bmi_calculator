@@ -65,4 +65,5 @@ class ProfileWidget extends StatelessWidget {
         color: color,
         child: child,
       ));
+
 }

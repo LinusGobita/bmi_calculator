@@ -12,6 +12,7 @@ class ScoreScreen extends StatelessWidget {
 
   ScoreScreen({Key? key, required this.bmiScore, required this.age})
       : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     Rating rating = Rating.getRatingFromBMI(bmiScore, context);
