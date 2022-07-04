@@ -2,23 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:pretty_gauge/pretty_gauge.dart';
 import 'package:share_plus/share_plus.dart';
 
+import '../businessObject/Rating.dart';
 import '../generated/l10n.dart';
-import '../util/rating_calculator.dart';
 import '../widget/appbar_widget.dart';
 
 class ScoreScreen extends StatelessWidget {
   final double bmiScore;
   final int age;
-  String? bmiStatus;
-  String? bmiInterpretation;
-  Color? bmiStatusColor;
 
   ScoreScreen({Key? key, required this.bmiScore, required this.age})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    setBmiInterpretation(context);
+    Rating rating = Rating.getRatingFromBMI(bmiScore, context);
+
     return Scaffold(
       appBar: buildAppBar(context, S.of(context).bmi_score),
       body: Container(
@@ -58,14 +56,14 @@ class ScoreScreen extends StatelessWidget {
                       height: 10,
                     ),
                     Text(
-                      bmiStatus!,
-                      style: TextStyle(fontSize: 20, color: bmiStatusColor!),
+                      rating.status,
+                      style: TextStyle(fontSize: 20, color: rating.bmiStatusColor!),
                     ),
                     const SizedBox(
                       height: 10,
                     ),
                     Text(
-                      bmiInterpretation!,
+                      rating.message!,
                       style: const TextStyle(fontSize: 15),
                     ),
                     const SizedBox(
@@ -95,11 +93,5 @@ class ScoreScreen extends StatelessWidget {
                     )
                   ]))),
     );
-  }
-
-  void setBmiInterpretation(context) {
-    bmiInterpretation = rating_calculator.rate(bmiScore, context)[0];
-    bmiStatus = rating_calculator.rate(bmiScore, context)[1];
-    bmiStatusColor = rating_calculator.rate(bmiScore, context)[2];
   }
 }
