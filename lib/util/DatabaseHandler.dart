@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import '../businessObject/BMI.dart';
@@ -34,5 +36,17 @@ class DatabaseHandler {
   Future<void> updateUsingHelper(BMI bmi) async {
     final Database db = await initializeDB();
     await db.update('bmi', bmi.toMap(), where: 'id= ?', whereArgs: [bmi.id]);
+  }
+
+  int getLastId() {
+    /* todo: get last ID, needs to be Future and async
+    lastId = ;
+
+    final Database db = await initializeDB();
+
+     */
+    //fake code follows
+    var lastId = Random().nextInt(1000000);
+    return lastId;
   }
 }
