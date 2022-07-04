@@ -5,7 +5,7 @@ import 'package:share_plus/share_plus.dart';
 
 import '../businessObject/BMI.dart';
 import '../generated/l10n.dart';
-import '../util/Rating.dart';
+import '../util/rating_calculator.dart';
 import '../widget/appbar_widget.dart';
 
 class ScoreScreen extends StatelessWidget {
@@ -100,9 +100,9 @@ class ScoreScreen extends StatelessWidget {
   }
 
   void setBmiInterpretation(context) {
-    bmiInterpretation = Rating.rate(bmiScore, context)[0];
-    bmiStatus = Rating.rate(bmiScore, context)[1];
-    bmiStatusColor = Rating.rate(bmiScore, context)[2];
+    bmiInterpretation = rating_calculator.rate(bmiScore, context)[0];
+    bmiStatus = rating_calculator.rate(bmiScore, context)[1];
+    bmiStatusColor = rating_calculator.rate(bmiScore, context)[2];
   }
 
 }

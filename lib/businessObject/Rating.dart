@@ -1,13 +1,24 @@
 import 'package:flutter/material.dart';
-
 import '../generated/l10n.dart';
 
 class Rating {
-  static rate(bmi, context) {
+  final double bmi;
+  final String message;
+  final String status;
+  final MaterialColor bmiStatusColor;
+
+  const Rating({
+    required this.bmi,
+    required this.message,
+    required this.status,
+    required this.bmiStatusColor
+});
+
+  static getRatingFromBMI(bmi, context) {
+
     String message;
     String status;
     MaterialColor bmiStatusColor;
-    var ratingList = [];
 
     if (bmi < 15) {
       message = S.of(context).underweight_very_severely;
@@ -47,10 +58,29 @@ class Rating {
       bmiStatusColor = Colors.pink;
     }
 
-    ratingList.add(message);
-    ratingList.add(status);
-    ratingList.add(bmiStatusColor);
-
-    return ratingList;
+    Rating rating = new Rating(bmi: bmi, message: message, status: status, bmiStatusColor: bmiStatusColor);
+    return rating;
   }
+
+  static getAllRating(context){
+    List<Rating> allRating = <Rating>[];
+    bool isInside = false;
+
+    for (double i = 1; i < 50; i++) {
+      Rating rating = getRatingFromBMI(i, context);
+
+      for (Rating ra in allRating){
+        if (ra.message == rating.message){
+          isInside = true;
+        }
+      }
+
+      if (isInside == false){
+        allRating.add(rating);
+      }
+      isInside = false;
+    }
+    return allRating;
+  }
+
 }
