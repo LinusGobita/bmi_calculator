@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bmi/util/DatabaseHandler.dart';
 import 'package:pretty_gauge/pretty_gauge.dart';
 import 'package:share_plus/share_plus.dart';
 
+import '../businessObject/BMI.dart';
 import '../businessObject/Rating.dart';
 import '../generated/l10n.dart';
 import '../widget/appbar_widget.dart';
@@ -16,6 +18,7 @@ class ScoreScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Rating rating = Rating.getRatingFromBMI(bmiScore, context);
+    DatabaseHandler dbHandler = DatabaseHandler();
 
     return Scaffold(
       appBar: buildAppBar(context, S.of(context).bmi_score),
@@ -57,7 +60,8 @@ class ScoreScreen extends StatelessWidget {
                     ),
                     Text(
                       rating.status,
-                      style: TextStyle(fontSize: 20, color: rating.bmiStatusColor!),
+                      style: TextStyle(
+                          fontSize: 20, color: rating.bmiStatusColor!),
                     ),
                     const SizedBox(
                       height: 10,
@@ -77,17 +81,20 @@ class ScoreScreen extends StatelessWidget {
                               Navigator.pop(context);
                             },
                             //child: const Text("Re-calculate")),
-                        child: Text(S.of(context).recalculate)),
+                            child: Text(S.of(context).recalculate)),
                         const SizedBox(
                           width: 10,
                         ),
                         ElevatedButton(
-                            onPressed: () {
-                              Share.share(
-                                  "Your BMI is ${bmiScore.toStringAsFixed(1)} at age $age");
-                            },
+                          onPressed: () {
+                            BMI bmi =
+                                BMI(bmi: bmiScore, userName: "foo", id: 1);
+                            print(bmi.toString());
+                            dbHandler.insertBMI(bmi);
+                          },
 
-                          child: Text(S.of(context).share),
+                          //child: Text(S.of(context).share),
+                          child: Text("Save"),
                         )
                       ],
                     )

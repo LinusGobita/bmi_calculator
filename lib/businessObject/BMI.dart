@@ -5,31 +5,25 @@ import 'package:path/path.dart';
 
 class BMI {
   final int id;
-  final double bmiScore;
-
+  final double bmi;
   String userName;
 
   BMI({
     required this.id,
     required this.userName,
-    required this.bmiScore,
+    required this.bmi,
   });
 
   Map<String, dynamic> toMap() {
-    return {'id': id, 'bmiScore': bmiScore, 'userName': userName};
+    return {'id': id, 'bmi': bmi, 'userName': userName};
   }
 
   @override
   String toString() {
-    return 'BMI{id: $id, bmiScore: $bmiScore, userName: $userName}';
+    return 'BMI{id: $id, bmi: $bmi, userName: $userName}';
   }
 
   factory BMI.fromMap(Map<String, dynamic> json) {
-    return BMI(
-      id: json['id'],
-      bmiScore: json['bmiScore'],
-        userName: json['userName']
-    );
+    return BMI(id: json['id'], bmi: json['bmi'], userName: json['userName']);
   }
-
 }
