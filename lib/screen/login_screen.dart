@@ -44,67 +44,46 @@ class _LoginScreenState extends State<LoginScreen> {
         appBar: buildAppBar(context, "Login"),
         body: isLoading
             ? Center(child: CircularProgressIndicator())
-            : Column(
-                children: [
-                  SingleChildScrollView(
+            : Column(children: [
+                SingleChildScrollView(
                     child: Container(
-                      padding: const EdgeInsets.all(12),
-                      child: Card(
-                        elevation: 12,
-                        shape: const RoundedRectangleBorder(),
-                        child: Column(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                  height: 100,
-                                  child: ListView(
-                                    scrollDirection: Axis.horizontal,
-                                    children: [
-                                      GenderWidget(user: users[0]),
-                                      const SizedBox(width: 20,),
-                                      GenderWidget(user: users[1]),
-                                    ],
-                                  )),
-                            )
-                          ],
+                  padding: const EdgeInsets.all(12),
+                  child: Card(
+                    elevation: 12,
+                    shape: const RoundedRectangleBorder(),
+                    child: Column(
+                      children: [
+                        UserWidgets(
+                            users: users,
+                            onChange: (genderVal) {
+                              _gender = genderVal;
+                            }),
+                        SizedBox(
+                          height: 50,
+                          width: 200,
+                          child: TextButton(
+                            onPressed: () {
+
+                            },
+                            child: Text("logging"),
+                            style: TextButton.styleFrom(
+                                primary: Colors.black,
+                                backgroundColor: MyThemes.primaryColor),
+                          ),
                         ),
-                      ),
+                        InkWell(
+                          child: new Text("Create new User"),
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => NewUserScreen()));
+                          },
+                        ),
+                      ],
                     ),
                   ),
-
-                  /*
-                  ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (listViewContext, index) {
-                        return GenderWidget(
-                            user: users[index],
-                            //onChange: (genderVal) {}
-                        );
-                      },
-                      itemCount: users.length),
-                   */
-
-                  SizedBox(
-                    height: 50,
-                    width: 200,
-                    child: TextButton(
-                      onPressed: () {},
-                      child: Text("logging"),
-                      style: TextButton.styleFrom(
-                          primary: Colors.black,
-                          backgroundColor: MyThemes.primaryColor),
-                    ),
-                  ),
-                  InkWell(
-                      child: new Text("Create new User"),
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => NewUserScreen()));
-                      }),
-                ],
-              ));
+                ))
+              ]));
   }
 }
