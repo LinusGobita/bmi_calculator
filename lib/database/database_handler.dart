@@ -28,8 +28,8 @@ class DatabaseHandler {
   Future _createDB(Database db, int version) async {
     final idType = 'INTEGER PRIMARY KEY AUTOINCREMENT';
     final textType = 'TEXT NOT NULL';
-    final boolType = 'BOOLEAN NOT NULL';
-    final integerType = 'INTEGER NOT NULL';
+    //final boolType = 'BOOLEAN NOT NULL';
+    //final integerType = 'INTEGER NOT NULL';
 
     await db.execute('''
 CREATE TABLE $tableUser ( 
@@ -54,7 +54,6 @@ CREATE TABLE $tableUser (
     //     '${json[NoteFields.title]}, ${json[NoteFields.description]}, ${json[NoteFields.time]}';
     // final id = await db
     //     .rawInsert('INSERT INTO table_name ($columns) VALUES ($values)');
-    print(user.name);
 
     final id = await db.insert(tableUser, user.toJson());
 

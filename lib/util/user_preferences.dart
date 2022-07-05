@@ -3,28 +3,33 @@ import '../businessObject/User.dart';
 class UserPreferences {
 
   static const myUser = User(
-    id: 101,
+    id: 10,
     imagePath: "assets/image/man.jpeg",
-    name: "Linus",
-    email: "linus@gobita.ch",
-    about: "Ich bin nur uf dere App, wel sie spass macht zum programmiere, und nöd zum min blöde bmi z mässe!",
+    name: "Test",
+    email: "Test@gobita.ch",
+    about: "Test",
     //isDarkMode: false
   );
 
   static const emptyUser = User(
-    id: 3,
+    id: null,
     imagePath: "assets/image/man.jpeg",
-    name: "Pietro",
-    email: "pietro@gobita.ch",
-    about: "Schiess BMI",
+    name: "Your Name",
+    email: "Your Email",
+    about: "About You",
     //isDarkMode: false
   );
 
   User get user {
     return myUser;
   }
-    User get newUser {
+
+  User get newUser {
     return emptyUser;
   }
 
+  void selectUser(User user) {
+    //myUser = user;
+    print(user.name);
+  }
 }

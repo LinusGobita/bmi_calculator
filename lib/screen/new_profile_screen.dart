@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bmi/database/database_handler.dart';
-import 'package:sqflite/sqflite.dart';
 
 import '../businessObject/User.dart';
 import '../provider/provider.dart';
@@ -8,6 +7,7 @@ import '../util/user_preferences.dart';
 import '../widget/appbar_widget.dart';
 import '../widget/profil_widget.dart';
 import '../widget/textfiel_widget.dart';
+import 'login_screen.dart';
 
 class NewUserScreen extends StatefulWidget {
   const NewUserScreen({Key? key}) : super(key: key);
@@ -64,6 +64,10 @@ class _NewUserScreenState extends State<NewUserScreen> {
               child: TextButton(
                 onPressed: () {
                   DatabaseHandler.instance.create(user);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LoginScreen()));
                 },
                 child: Text("Save User"),
                 style: TextButton.styleFrom(

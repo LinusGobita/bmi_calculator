@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bmi/provider/provider.dart';
+import 'package:flutter_bmi/screen/home_screen.dart';
 import 'package:flutter_bmi/screen/new_profile_screen.dart';
 import 'package:flutter_bmi/database/database_handler.dart';
+import 'package:flutter_bmi/util/user_preferences.dart';
 
 import '../businessObject/User.dart';
 import '../widget/appbar_widget.dart';
@@ -39,6 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    UserPreferences select = UserPreferences();
     int _gender = 0;
     return Scaffold(
         appBar: buildAppBar(context, "Login"),
@@ -63,7 +66,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           width: 200,
                           child: TextButton(
                             onPressed: () {
-
+                              select.selectUser(users[_gender]);
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => HomeScreen()));
                             },
                             child: Text("logging"),
                             style: TextButton.styleFrom(

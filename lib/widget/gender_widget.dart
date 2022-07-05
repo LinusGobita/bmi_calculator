@@ -66,36 +66,3 @@ class _UserWidgetsState extends State<UserWidgets> {
     );
   }
 }
-/*
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-        height: 100,
-        child: ListView(
-          scrollDirection: Axis.horizontal,
-          children: [
-          buildCard("Linus", 1),
-            const SizedBox(width: 20,),
-            buildCard("Pietro", 2),
-            const SizedBox(width: 20,),
-            buildCard("Didier", 3),
-            const SizedBox(width: 20,),
-            buildCard("Mike", 4),
-            const SizedBox(width: 20,),
-            buildCard("Marco", 5),
-            const SizedBox(width: 20,),
-            const Icon(Icons.add, color: Colors.blue,),
-            const InkWell(
-                child: CircleAvatar(
-                  radius: 12,
-                  backgroundColor:  Colors.blue,
-                  child: Icon(Icons.add, color: Colors.white,),
-                ),
-            )
-          ]
-          )
-        ),
-      );
-  }*/

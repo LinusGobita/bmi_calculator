@@ -5,18 +5,18 @@ import 'package:flutter_bmi/widget/appbar_widget.dart';
 import 'package:flutter_bmi/widget/profil_widget.dart';
 
 import '../businessObject/User.dart';
+import '../database/database_handler.dart';
+import '../provider/provider.dart';
 import '../widget/textfiel_widget.dart';
 
 class EditProfilePage extends StatefulWidget {
   const EditProfilePage({Key? key}) : super(key: key);
-
 
   @override
   State<EditProfilePage> createState() => _EditProfilePageState();
 }
 
 class _EditProfilePageState extends State<EditProfilePage> {
-
   User user = UserPreferences().user;
 
   @override
@@ -53,6 +53,22 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 text: user.about,
                 maxLines: 5,
                 onChange: (name) {},
+              ),
+              const SizedBox(
+                height: 24,
+              ),
+              SizedBox(
+                height: 50,
+                width: 200,
+                child: TextButton(
+                  onPressed: () {
+                    DatabaseHandler.instance.update(user);
+                  },
+                  child: Text("Edit User"),
+                  style: TextButton.styleFrom(
+                      primary: Colors.black,
+                      backgroundColor: MyThemes.primaryColor),
+                ),
               ),
             ]),
       );

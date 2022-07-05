@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bmi/provider/provider.dart';
 import 'package:flutter_bmi/provider/theme_provider.dart';
-import 'package:flutter_bmi/util/user_preferences.dart';
 import 'generated/l10n.dart';
 import 'screen/home_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -18,7 +17,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const user = UserPreferences.myUser;
     return ThemeProvider(
       //initTheme: user.isDarkMode ? MyThemes.darkTheme : MyThemes.lightTheme,
       initTheme: MyThemes.lightTheme,
