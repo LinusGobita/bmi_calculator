@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_3d_choice_chip/flutter_3d_choice_chip.dart';
 
+import '../businessObject/User.dart';
+
 
 class GenderWidget extends StatefulWidget {
-  final Function(int) onChange;
-  const GenderWidget({Key? key, required this.onChange}) : super(key: key);
+  final User user;
+  const GenderWidget({Key? key,required this.user}) : super(key: key);
 
   @override
   State<GenderWidget> createState() => _GenderWidgetState();
@@ -13,7 +15,6 @@ class GenderWidget extends StatefulWidget {
 class _GenderWidgetState extends State<GenderWidget> {
   int _gender = 0;
 
-  final users = [];
 
   final ChoiceChip3DStyle selectedStyle = ChoiceChip3DStyle(
       topColor: Colors.grey[200]!,
@@ -25,31 +26,35 @@ class _GenderWidgetState extends State<GenderWidget> {
       backColor: Colors.grey[300]!,
       borderRadius: BorderRadius.circular(20));
 
-  Widget buildCard(String name, int id ) => ChoiceChip3D(
-      border: Border.all(color: Colors.grey),
-      style: _gender == id ? selectedStyle : unselectedStyle,
-      onSelected: () {
-        setState(() {
-          _gender = id;
-        });
-        widget.onChange(_gender);
-      },
-      onUnSelected: () {},
-      selected: _gender == id,
-      child: Column(
-        children: [
-          Image.asset(
-            "assets/image/man.jpeg",
-            width: 50,
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          Text(name),
-        ],
-      )
-  );
 
+  @override
+  Widget build(BuildContext context,) {
+    return ChoiceChip3D(
+        border: Border.all(color: Colors.grey),
+        style: _gender == widget.user.id! ? selectedStyle : unselectedStyle,
+        onSelected: () {
+          setState(() {
+            _gender = widget.user.id!;
+          });
+//          widget.onChange(_gender);
+        },
+        onUnSelected: () {},
+        selected: _gender == widget.user.id!,
+        child: Column(
+          children: [
+            Image.asset(
+              "assets/image/man.jpeg",
+              width: 50,
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            Text(widget.user.name),
+          ],
+        ));
+  }
+}
+/*
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -81,5 +86,5 @@ class _GenderWidgetState extends State<GenderWidget> {
           )
         ),
       );
-  }
-}
+  }*/
+

@@ -42,11 +42,6 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Column(
                 children: [
                   //Lets create widget for gender selection
-                  GenderWidget(
-                    onChange: (genderVal) {
-                      _gender = genderVal;
-                    },
-                  ),
                   SliderWidget(
                       onChange: (heightVal) {
                         _height = heightVal;

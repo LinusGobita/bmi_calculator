@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bmi/database/database_handler.dart';
+import 'package:sqflite/sqflite.dart';
 
 import '../businessObject/User.dart';
 import '../provider/provider.dart';
@@ -60,7 +62,9 @@ class _NewUserScreenState extends State<NewUserScreen> {
               height: 50,
               width: 200,
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  DatabaseHandler.instance.create(user);
+                },
                 child: Text("Save User"),
                 style: TextButton.styleFrom(
                     primary: Colors.black,

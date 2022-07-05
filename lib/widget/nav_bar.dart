@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bmi/screen/bmi_history_screen.dart';
 import 'package:flutter_bmi/screen/bmi_rating_screen.dart';
+import 'package:flutter_bmi/screen/new_profile_screen.dart';
 import 'package:flutter_bmi/widget/profil_widget.dart';
 
 import '../screen/edit_profile_screen.dart';
@@ -70,6 +71,15 @@ class _NavBarState extends State<NavBar> {
                     context,
                     MaterialPageRoute(
                         builder: (context) => const BMIRatingScreen()));
+              }),
+          ListTile(
+              leading: Icon(Icons.list),
+              title: Text("Add New User"),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const NewUserScreen()));
               }),
           Divider(),
           ListTile(

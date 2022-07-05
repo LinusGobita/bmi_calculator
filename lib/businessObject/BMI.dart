@@ -1,5 +1,5 @@
 //import 'package:flutter_bmi/util/Database.dart';
-import 'package:flutter_bmi/util/DatabaseHandler.dart';
+import 'package:flutter_bmi/database/database_handler.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 

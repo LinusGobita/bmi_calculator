@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bmi/database/database_handler.dart';
 import 'package:pretty_gauge/pretty_gauge.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -16,6 +17,7 @@ class ScoreScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Rating rating = Rating.getRatingFromBMI(bmiScore, context);
+
     return Scaffold(
       appBar: buildAppBar(context, S.of(context).bmi_score),
       body: Container(
@@ -85,6 +87,12 @@ class ScoreScreen extends StatelessWidget {
                               Share.share(
                                   "Your BMI is ${bmiScore.toStringAsFixed(1)} at age $age");
                             },
+
+                          child: Text(S.of(context).share),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                          },
 
                           child: Text(S.of(context).share),
                         )
