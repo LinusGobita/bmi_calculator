@@ -36,11 +36,9 @@ class BMIRatingScreen extends StatelessWidget {
                                       (allRatingList[index + 1].bmi))),
                         );
                       },
-                    )
-                );
+                    ));
               },
-              itemCount: allRatingList.length)
-      ),
+              itemCount: allRatingList.length)),
     );
   }
 }

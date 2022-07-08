@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter_bmi/businessObject/BMI.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
@@ -28,7 +26,6 @@ class DatabaseHandler {
   Future _createDB(Database db, int version) async {
     final idType = 'INTEGER PRIMARY KEY AUTOINCREMENT';
     final textType = 'TEXT NOT NULL';
-    final intType = 'TEXT NOT NULL';
     final bmiType = 'Double NOT NULL';
     //final boolType = 'BOOLEAN NOT NULL';
     //final integerType = 'INTEGER NOT NULL';
@@ -46,7 +43,7 @@ CREATE TABLE $tableUser (
 CREATE TABLE $tableBMI (
   ${BMIFields.id} $idType,
   ${BMIFields.user_id} $idType,
-  ${BMIFields.bmiScore} $intType
+  ${BMIFields.bmiScore} $bmiType
   )
 ''');
   }
@@ -66,7 +63,6 @@ CREATE TABLE $tableBMI (
     final result = await db.query(tableBMI);
     return result.map((json) => BMI.fromJson(json)).toList();
   }
-
 
   Future<User> createUser(User user) async {
     final db = await instance.database;

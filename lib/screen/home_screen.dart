@@ -2,12 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bmi/screen/score_screen.dart';
 import 'package:flutter_bmi/util/Calculate.dart';
 import 'package:flutter_bmi/widget/nav_bar.dart';
-
 import '../generated/l10n.dart';
-import '../widget/gender_widget.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:swipeable_button_view/swipeable_button_view.dart';
-
 import '../widget/slider_widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -18,7 +15,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _gender = 0;
   int _height = 150;
   int _age = 30;
   int _weight = 50;
@@ -28,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const NavBar(),
+        drawer: const NavBar(),
         appBar: AppBar(
           centerTitle: true,
           title: Text(S.of(context).app_title),
@@ -69,8 +65,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       initValue: 80,
                       max: 150,
                       unit: "Kg"),
-
-
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         vertical: 20, horizontal: 60),
