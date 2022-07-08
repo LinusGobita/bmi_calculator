@@ -26,8 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void dispose() {
-    //DatabaseHandler.instance.close();
-    //super.dispose();
+    super.dispose();
   }
 
   Future refreshUsers() async {
