@@ -23,8 +23,7 @@ class _BMIHistoryScreen extends State<BMIHistoryScreen> {
   }
 
   void dispose() {
-    //DatabaseHandler.instance.close();
-    //super.dispose();
+    super.dispose();
   }
 
   Future refreshBMI() async {
