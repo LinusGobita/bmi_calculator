@@ -75,7 +75,7 @@ class _NewUserScreenState extends State<NewUserScreen> {
                       name: newUser.name,
                       email: newUser.email,
                       about: newUser.about);
-                  DatabaseHandler.instance.create(user);
+                  DatabaseHandler.instance.createUser(user);
                   Navigator.push(
                       context,
                       MaterialPageRoute(

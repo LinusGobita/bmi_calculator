@@ -47,6 +47,9 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
           ),
           TextField(
             controller: controller,
+            onChanged: (value) {
+              //setState(() => widget.onChange = value);
+            },
             decoration: InputDecoration(
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12)

@@ -25,6 +25,7 @@ class _GenderWidgetState extends State<GenderWidget> {
       backColor: Colors.grey[300]!,
       borderRadius: BorderRadius.circular(20));
 
+  @override
   Widget buildCard(String name ) => ChoiceChip3D(
       border: Border.all(color: Colors.grey),
       style: _gender == 1 ? selectedStyle : unselectedStyle,

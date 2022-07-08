@@ -28,20 +28,19 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void dispose() {
-    //DatabaseHandler.instance.close();
-    //super.dispose();
+    DatabaseHandler.instance.close();
+    super.dispose();
   }
 
   Future refreshUsers() async {
     setState(() => isLoading = true);
-
     this.users = await DatabaseHandler.instance.readAllUsers();
     setState(() => isLoading = false);
   }
 
   @override
   Widget build(BuildContext context) {
-    UserPreferences select = UserPreferences();
+    //UserPreferences select = UserPreferences();
     int _userId = 0;
     return Scaffold(
         appBar: buildAppBar(context, "Login"),

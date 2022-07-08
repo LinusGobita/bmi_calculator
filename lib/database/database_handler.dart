@@ -1,12 +1,13 @@
+import 'dart:ui';
+
+import 'package:flutter_bmi/businessObject/BMI.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../businessObject/User.dart';
 
 class DatabaseHandler {
-
   static final DatabaseHandler instance = DatabaseHandler._init();
-
   static Database? _database;
 
   DatabaseHandler._init();
@@ -21,13 +22,14 @@ class DatabaseHandler {
   Future<Database> _initDB(String filePath) async {
     final dbPath = await getDatabasesPath();
     final path = join(dbPath, filePath);
-
     return await openDatabase(path, version: 1, onCreate: _createDB);
   }
 
   Future _createDB(Database db, int version) async {
     final idType = 'INTEGER PRIMARY KEY AUTOINCREMENT';
     final textType = 'TEXT NOT NULL';
+    final intType = 'TEXT NOT NULL';
+    final bmiType = 'Double NOT NULL';
     //final boolType = 'BOOLEAN NOT NULL';
     //final integerType = 'INTEGER NOT NULL';
 
@@ -38,13 +40,35 @@ CREATE TABLE $tableUser (
   ${UserFields.name} $textType,
   ${UserFields.email} $textType,
   ${UserFields.about} $textType
+  )''');
+
+    await db.execute('''
+CREATE TABLE $tableBMI (
+  ${BMIFields.id} $idType,
+  ${BMIFields.user_id} $idType,
+  ${BMIFields.bmiScore} $intType
   )
 ''');
   }
+
 //  ${UserFields.isDarkMode} $boolType
 
+  Future<BMI> createBMI(BMI bmi) async {
+    final db = await instance.database;
+    final id = await db.insert(tableBMI, bmi.toJson());
+    return bmi.copy(id: id);
+  }
 
-  Future<User> create(User user) async {
+  Future<List<BMI>> readAllBMI() async {
+    final db = await instance.database;
+    // final result =
+    //     await db.rawQuery('SELECT * FROM $tableNotes ORDER BY $orderBy');
+    final result = await db.query(tableBMI);
+    return result.map((json) => BMI.fromJson(json)).toList();
+  }
+
+
+  Future<User> createUser(User user) async {
     final db = await instance.database;
 
     // final json = note.toJson();
@@ -58,62 +82,61 @@ CREATE TABLE $tableUser (
     final id = await db.insert(tableUser, user.toJson());
 
     return user.copy(id: id);
-    }
+  }
 
-        Future<User> readUser(int id)
-    async {
-      final db = await instance.database;
+  Future<User> readUser(int id) async {
+    final db = await instance.database;
 
-      final maps = await db.query(
-        tableUser,
-        columns: UserFields.values,
-        where: '${UserFields.id} = ?',
-        whereArgs: [id],
-      );
+    final maps = await db.query(
+      tableUser,
+      columns: UserFields.values,
+      where: '${UserFields.id} = ?',
+      whereArgs: [id],
+    );
 
-      if (maps.isNotEmpty) {
-        return User.fromJson(maps.first);
-      } else {
-        throw Exception('ID $id not found');
-      }
-    }
-
-    Future<List<User>> readAllUsers() async {
-      final db = await instance.database;
-
-      final orderBy = '${UserFields.name} ASC';
-      // final result =
-      //     await db.rawQuery('SELECT * FROM $tableNotes ORDER BY $orderBy');
-
-      final result = await db.query(tableUser, orderBy: orderBy);
-
-      return result.map((json) => User.fromJson(json)).toList();
-    }
-
-    Future<int> update(User user) async {
-      final db = await instance.database;
-
-      return db.update(
-        tableUser,
-        user.toJson(),
-        where: '${UserFields.id} = ?',
-        whereArgs: [user.id],
-      );
-    }
-
-    Future<int> delete(int id) async {
-      final db = await instance.database;
-
-      return await db.delete(
-        tableUser,
-        where: '${UserFields.id} = ?',
-        whereArgs: [id],
-      );
-    }
-
-    Future close() async {
-      final db = await instance.database;
-
-      db.close();
+    if (maps.isNotEmpty) {
+      return User.fromJson(maps.first);
+    } else {
+      throw Exception('ID $id not found');
     }
   }
+
+  Future<List<User>> readAllUsers() async {
+    final db = await instance.database;
+
+    final orderBy = '${UserFields.name} ASC';
+    // final result =
+    //     await db.rawQuery('SELECT * FROM $tableNotes ORDER BY $orderBy');
+
+    final result = await db.query(tableUser, orderBy: orderBy);
+
+    return result.map((json) => User.fromJson(json)).toList();
+  }
+
+  Future<int> update(User user) async {
+    final db = await instance.database;
+
+    return db.update(
+      tableUser,
+      user.toJson(),
+      where: '${UserFields.id} = ?',
+      whereArgs: [user.id],
+    );
+  }
+
+  Future<int> delete(int id) async {
+    final db = await instance.database;
+
+    return await db.delete(
+      tableUser,
+      where: '${UserFields.id} = ?',
+      whereArgs: [id],
+    );
+  }
+
+  Future close() async {
+    final db = await instance.database;
+
+    db.close();
+  }
+}

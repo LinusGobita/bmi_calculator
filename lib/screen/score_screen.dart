@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bmi/businessObject/BMI.dart';
 import 'package:flutter_bmi/database/database_handler.dart';
 import 'package:pretty_gauge/pretty_gauge.dart';
 import 'package:share_plus/share_plus.dart';
@@ -6,6 +7,7 @@ import 'package:share_plus/share_plus.dart';
 import '../businessObject/Rating.dart';
 import '../generated/l10n.dart';
 import '../widget/appbar_widget.dart';
+import 'bmi_history_screen.dart';
 
 class ScoreScreen extends StatelessWidget {
   final double bmiScore;
@@ -92,9 +94,15 @@ class ScoreScreen extends StatelessWidget {
                         ),
                         ElevatedButton(
                           onPressed: () {
+                            BMI bmi = BMI(id: null, user_id: 1, bmiScore: bmiScore);
+                            DatabaseHandler.instance.createBMI(bmi);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const BMIHistoryScreen()));
                           },
 
-                          child: Text(S.of(context).share),
+                          child: Text("Save"),
                         )
                       ],
                     )
