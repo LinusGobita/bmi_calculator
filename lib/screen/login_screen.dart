@@ -68,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   MaterialPageRoute(
                                       builder: (context) => HomeScreen()));
                             },
-                            child: Text("logging"),
+                            child: Text("Log In"),
                             style: TextButton.styleFrom(
                                 primary: Colors.black,
                                 backgroundColor: MyThemes.primaryColor),
@@ -91,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               DatabaseHandler.instance.delete(_userId);
                               refreshUsers();
                             },
-                            child: Text("Delet Selectet User"),
+                            child: Text("Delete Selected User"),
                             style: TextButton.styleFrom(
                                 primary: Colors.black,
                                 backgroundColor: MyThemes.primaryColor),

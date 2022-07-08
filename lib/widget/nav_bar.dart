@@ -56,7 +56,7 @@ class _NavBarState extends State<NavBar> {
               }),
           ListTile(
               leading: Icon(Icons.health_and_safety),
-              title: Text("Gewchitsverlauf"),
+              title: Text("Gewichtsverlauf"),
               onTap: () {
                 Navigator.push(
                     context,
@@ -65,7 +65,7 @@ class _NavBarState extends State<NavBar> {
               }),
           ListTile(
               leading: Icon(Icons.list),
-              title: Text("Raiting"),
+              title: Text("Rating"),
               onTap: () {
                 Navigator.push(
                     context,
