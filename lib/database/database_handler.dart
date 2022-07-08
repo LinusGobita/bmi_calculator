@@ -29,7 +29,6 @@ class DatabaseHandler {
     final bmiType = 'Double NOT NULL';
     //final boolType = 'BOOLEAN NOT NULL';
     //final integerType = 'INTEGER NOT NULL';
-
     await db.execute('''
 CREATE TABLE [IF NOT EXISTS] $tableUser ( 
   ${UserFields.id} $idType, 
