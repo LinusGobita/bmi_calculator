@@ -17,7 +17,7 @@ class NewUserScreen extends StatefulWidget {
 }
 
 class _NewUserScreenState extends State<NewUserScreen> {
-  User user = UserPreferences().newUser;
+  NewUser newUser = NewUser();
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class _NewUserScreenState extends State<NewUserScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 32),
           children: [
             ProfileWidget(
-                imagePath: user.imagePath,
+                imagePath: newUser.imagePath,
                 isEdit: true,
                 onClicked: () async {}),
             const SizedBox(
@@ -35,25 +35,31 @@ class _NewUserScreenState extends State<NewUserScreen> {
             ),
             TextFieldWidget(
               label: "Full Name",
-              text: user.name,
-              onChange: (name) {},
+              text: newUser.name,
+              onChange: (name) {
+                newUser.name = name;
+              },
             ),
             const SizedBox(
               height: 24,
             ),
             TextFieldWidget(
               label: "E-Mail",
-              text: user.email,
-              onChange: (name) {},
+              text: newUser.email,
+              onChange: (name) {
+                newUser.email = name;
+              },
             ),
             const SizedBox(
               height: 24,
             ),
             TextFieldWidget(
               label: "About",
-              text: user.about,
+              text: newUser.about,
               maxLines: 5,
-              onChange: (name) {},
+              onChange: (name) {
+                newUser.about = name;
+              },
             ),
             const SizedBox(
               height: 24,
@@ -63,6 +69,12 @@ class _NewUserScreenState extends State<NewUserScreen> {
               width: 200,
               child: TextButton(
                 onPressed: () {
+                  User user = User(
+                      id: null,
+                      imagePath: newUser.imagePath,
+                      name: newUser.name,
+                      email: newUser.email,
+                      about: newUser.about);
                   DatabaseHandler.instance.create(user);
                   Navigator.push(
                       context,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bmi/provider/provider.dart';
 import 'package:flutter_bmi/provider/theme_provider.dart';
+import 'package:flutter_bmi/screen/login_screen.dart';
 import 'generated/l10n.dart';
 import 'screen/home_screen.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
             supportedLocales: S.delegate.supportedLocales,
 
             debugShowCheckedModeBanner: false,
-            home: const HomeScreen(),
+            home: const LoginScreen(),
         )
       )
     );

@@ -42,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     UserPreferences select = UserPreferences();
-    int _gender = 0;
+    int _userId = 0;
     return Scaffold(
         appBar: buildAppBar(context, "Login"),
         body: isLoading
@@ -58,15 +58,15 @@ class _LoginScreenState extends State<LoginScreen> {
                       children: [
                         UserWidgets(
                             users: users,
-                            onChange: (genderVal) {
-                              _gender = genderVal;
+                            onChange: (userId) {
+                              _userId = userId;
                             }),
                         SizedBox(
                           height: 50,
                           width: 200,
                           child: TextButton(
                             onPressed: () {
-                              select.selectUser(users[_gender]);
+                              //select.selectUser(users[_userId]);
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -86,6 +86,20 @@ class _LoginScreenState extends State<LoginScreen> {
                                 MaterialPageRoute(
                                     builder: (context) => NewUserScreen()));
                           },
+                        ),
+                        SizedBox(
+                          height: 50,
+                          width: 200,
+                          child: TextButton(
+                            onPressed: () {
+                              DatabaseHandler.instance.delete(_userId);
+                              refreshUsers();
+                            },
+                            child: Text("Delet Selectet User"),
+                            style: TextButton.styleFrom(
+                                primary: Colors.black,
+                                backgroundColor: MyThemes.primaryColor),
+                          ),
                         ),
                       ],
                     ),

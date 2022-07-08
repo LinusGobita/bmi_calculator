@@ -14,7 +14,6 @@ class UserFields {
 
 }
 
-
 class User {
   final  int? id;
   final String imagePath;
@@ -87,4 +86,13 @@ class User {
         //isDarkMode: false
         );
   }
+}
+
+class NewUser{
+  int? id;
+  String imagePath = "assets/image/man.jpeg";
+  String name = "Your Name";
+  String email = "You Email";
+  String about = "Something about you!";
+
 }
