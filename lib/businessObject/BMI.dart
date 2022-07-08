@@ -1,9 +1,4 @@
-//import 'package:flutter_bmi/util/Database.dart';
-import 'dart:ffi';
-
-import 'package:flutter_bmi/database/database_handler.dart';
-import 'package:sqflite/sqflite.dart';
-import 'package:path/path.dart';
+final String tableBMI = "bmi";
 
 class BMIFields {
   static final List<String> values = [id, user_id, bmiScore];

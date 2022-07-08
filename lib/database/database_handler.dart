@@ -31,7 +31,7 @@ class DatabaseHandler {
     //final integerType = 'INTEGER NOT NULL';
 
     await db.execute('''
-CREATE TABLE $tableUser ( 
+CREATE TABLE [IF NOT EXISTS] $tableUser ( 
   ${UserFields.id} $idType, 
   ${UserFields.imagePath} $textType,
   ${UserFields.name} $textType,
@@ -40,7 +40,7 @@ CREATE TABLE $tableUser (
   )''');
 
     await db.execute('''
-CREATE TABLE $tableBMI (
+CREATE TABLE [IF NOT EXISTS] $tableBMI (
   ${BMIFields.id} $idType,
   ${BMIFields.user_id} $idType,
   ${BMIFields.bmiScore} $bmiType

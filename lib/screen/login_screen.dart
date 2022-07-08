@@ -4,8 +4,6 @@ import 'package:flutter_bmi/provider/provider.dart';
 import 'package:flutter_bmi/screen/home_screen.dart';
 import 'package:flutter_bmi/screen/new_profile_screen.dart';
 import 'package:flutter_bmi/database/database_handler.dart';
-import 'package:flutter_bmi/util/user_preferences.dart';
-
 import '../businessObject/User.dart';
 import '../widget/appbar_widget.dart';
 import '../widget/gender_widget.dart';
@@ -28,8 +26,8 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void dispose() {
-    DatabaseHandler.instance.close();
-    super.dispose();
+    //DatabaseHandler.instance.close();
+    //super.dispose();
   }
 
   Future refreshUsers() async {

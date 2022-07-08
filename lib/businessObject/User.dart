@@ -1,5 +1,4 @@
 final String tableUser = "user";
-final String tableBMI = "bmi";
 
 class UserFields {
   static final List<String> values = [
