@@ -27,10 +27,11 @@ class DatabaseHandler {
     final idType = 'INTEGER PRIMARY KEY AUTOINCREMENT';
     final textType = 'TEXT NOT NULL';
     final bmiType = 'Double NOT NULL';
+    final intType = 'INTEGER NOT NULL';
     //final boolType = 'BOOLEAN NOT NULL';
     //final integerType = 'INTEGER NOT NULL';
     await db.execute('''
-CREATE TABLE [IF NOT EXISTS] $tableUser ( 
+  CREATE TABLE $tableUser (  
   ${UserFields.id} $idType, 
   ${UserFields.imagePath} $textType,
   ${UserFields.name} $textType,
@@ -39,9 +40,9 @@ CREATE TABLE [IF NOT EXISTS] $tableUser (
   )''');
 
     await db.execute('''
-CREATE TABLE [IF NOT EXISTS] $tableBMI (
+CREATE TABLE $tableBMI (
   ${BMIFields.id} $idType,
-  ${BMIFields.user_id} $idType,
+  ${BMIFields.user_id} $intType,
   ${BMIFields.bmiScore} $bmiType
   )
 ''');
